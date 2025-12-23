@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+const nombre = "Lucia Toro"; // Cambia por el nombre real
+const titulo = "Broker Hipotecaria Certificada";
+const bio =
+  "Con más de 9 años de experiencia en el sector bancario, he ayudado a cientos de familias a encontrar la mejor opción de financiamiento para su hogar. Mi enfoque es personalizado, transparente y siempre priorizando tus intereses.";
+const experiencia = [
+  "Especialista en hipotecas residenciales y refinanciamientos",
+  "Asesoramiento en préstamos FHA, VA y convencionales",
+  "Miembro de la Asociación Nacional de Brokers Hipotecarios",
+  "Más de 3 clientes satisfechos",
+];
+---
+
+<Layout title="Sobre mí |">
+  <main class="py-10 px-4 md:px-6 lg:px-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+        <div class="lg:col-span-2 text-center lg:text-left">
+          <h1 class="text-5xl font-bold">Sobre mí</h1>
+          <h2
+            class="text-3xl font-semibold mt-4 bg-linear-to-r from-blue-600 to-cyan-600 text-transparent bg-clip-text"
+          >
+            {titulo}
+          </h2>
+          <p class="py-6 text-lg">{bio}</p>
+
+          <!-- Lista de experiencia o valores -->
+          <ul class="list-disc list-inside space-y-3 text-lg">
+            {experiencia.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class="lg:col-span-1 flex justify-center items-center py-8">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1690407617542-2f210cf20d7e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Foto de {nombre}"
+            class="max-w-sm rounded-lg shadow-2xl object-cover w-80 h-96"
+          />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

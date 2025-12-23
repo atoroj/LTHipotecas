@@ -1,0 +1,41 @@
+---
+// Asegúrate de que esta ruta es correcta
+import "../styles/app.css";
+
+interface Props {
+  title?: string;
+}
+const subtitle = " Asesora Hipotecaria";
+const { title = "" } = Astro.props;
+
+import Header from "../components/ui/Header.astro";
+import Footer from "../components/ui/Footer.astro";
+import WhatsappWidget from "../components/WhatsappWidget.astro";
+import { ClientRouter } from "astro:transitions";
+---
+
+<html lang="en" class="bg-gray-50 dark:bg-gray-800">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <ClientRouter />
+    <title>{title + subtitle}</title>
+  </head>
+
+  <body class="min-h-screen flex flex-col">
+    <Header currentPath={Astro.url.pathname} />
+    <main class="grow">
+      <slot />
+      <WhatsappWidget />
+    </main>
+    <Footer />
+  </body>
+</html>
