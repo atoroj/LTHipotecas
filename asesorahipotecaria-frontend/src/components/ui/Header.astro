@@ -8,7 +8,7 @@ const { currentPath } = Astro.props;
 const navLinks = [
   { href: "/", label: "Inicio" },
   { href: "/sobre-mi", label: "Sobre mí" },
-  { href: "/testimonios", label: "Testimonios" },
+  { href: "/preguntas-frecuentes", label: "Preguntas Frecuentes" },
 ];
 
 // Clases base
@@ -30,11 +30,9 @@ const inactiveClasses =
         class="flex-none text-xl font-semibold dark:text-white flex items-center gap-x-3"
         href="/"
         aria-label="Brand"
-        ><span class="text-blue-600 dark:text-blue-500">
+        ><span class="text-blue-600 dark:text-blue-500 w-8 h-8 md:w-10 md:h-10">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="50"
-            height="50"
             viewBox="0 0 400.5 400.5"
             preserveAspectRatio="xMidYMid meet"
             class="text-blue-600 dark:text-blue-400 transition-transform group-hover:scale-110"
@@ -45,7 +43,7 @@ const inactiveClasses =
             ></path>
           </svg>
         </span>
-        <span class="text-2xl hidden sm:inline-block">Asesoría Hipotecaria</span
+        <span class="text-sm md:text-2xl">Asesoría Hipotecaria</span
         >
       </a>
       <input type="checkbox" id="menu-toggle" class="hidden peer" />
