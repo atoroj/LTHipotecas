@@ -18,9 +18,7 @@ const { step, title, description, isLast = false } = Astro.props;
     <span class="text-xl font-bold">{step}</span>
   </div>
 
-  <h3
-    class="text-xl font-bold text-gray-900 dark:text-white mb-3 tracking-tight"
-  >
+  <h3 class="text-xl font-bold mb-3 tracking-tight">
     {title}
   </h3>
 
@@ -31,7 +29,7 @@ const { step, title, description, isLast = false } = Astro.props;
   {/* Flecha decorativa - Solo visible en MD+ y si no es la última card */}
   {
     !isLast && (
-      <div class="hidden md:block absolute -right-6 top-1/2 -translate-y-1/2 z-10">
+      <div class="hidden md:block absolute -right-8 top-1/2 -translate-y-1/2 z-10">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-8 w-8 text-blue-300 dark:text-blue-900"

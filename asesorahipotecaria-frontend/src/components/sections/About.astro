@@ -1,0 +1,85 @@
+---
+// src/components/sections/AboutSection.astro
+
+const nombre = "Lucia Toro";
+const experiencia = [
+  "Inscrita en el Banco de España como intermediaria de crédito inmobiliario con número de registro E461",
+  "Miembro de ANICI (Asociación Nacional de Intermediarias de Crédito Inmobiliario)",
+];
+---
+
+<section class="py-20 px-4 md:px-6 lg:px-12">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+      <div class="lg:col-span-2 text-center lg:text-left">
+        <h2 class="text-5xl font-bold">Sobre mí</h2>
+        <h3
+          class="text-3xl font-semibold mt-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-transparent bg-clip-text"
+        >
+          Soy Lucia Toro, asesora hipotecaria
+        </h3>
+        <p class="pt-2 leading-relaxed">
+          Durante más de 10 años trabajé en banca, lo que me permitió conocer el
+          sistema desde dentro.
+        </p>
+
+        <p class="pt-2 leading-relaxed">
+          Hoy acompaño a personas que quieren comprar su vivienda con
+          tranquilidad, entendiendo cada paso y tomando decisiones bien
+          informadas.
+        </p>
+        <p class="pt-2 leading-relaxed">
+          Trabajo de forma cercana, ordenada y honesta.
+        </p>
+        <p class="pt-2 leading-relaxed">
+          Si una operación no es viable, lo digo.
+        </p>
+        <p class="pt-2 leading-relaxed">
+          Y si lo es, me implico al máximo para que llegues a la firma con
+          seguridad
+        </p>
+
+        <h2 class="pt-4 text-2xl font-bold leading-relaxed">
+          Transparencia y regulación
+        </h2>
+        <ul class="space-y-4 text-lg mt-4 text-left inline-block">
+          {
+            experiencia.map((item) => (
+              <li class="flex items-start">
+                <span class="mr-3 text-blue-600 mt-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="lg:col-span-1 flex justify-center items-center py-8">
+        <div class="relative">
+          <div
+            class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg opacity-30 blur-lg"
+          >
+          </div>
+          <img
+            src="https://plus.unsplash.com/premium_photo-1690407617542-2f210cf20d7e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt={`Foto de ${nombre}`}
+            class="relative max-w-sm rounded-lg shadow-2xl object-cover w-80 h-96"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

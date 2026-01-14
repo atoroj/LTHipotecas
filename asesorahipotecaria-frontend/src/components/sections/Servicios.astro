@@ -1,0 +1,96 @@
+---
+// src/components/sections/ServicesTrust.astro
+import StepCard from "../StepCard.astro";
+import BankLogos from "../BankLogos.astro";
+
+const steps = [
+  {
+    step: "1",
+    title: "Evaluación inicial",
+    description:
+      "Analizamos tu punto de partida, situación financiera y objetivos, para plantear la operación con criterio profesional.",
+  },
+  {
+    step: "2",
+    title: "Planteamiento y negociación",
+    description:
+      "Preparamos tu expediente con visión financiera y gestionamos la negociación con las entidades bancarias.",
+  },
+  {
+    step: "3",
+    title: "Firma de hipoteca",
+    description:
+      "Te acompañamos hasta el día de la firma, controlando que todo esté a punto para que la hipoteca se cierre con calma y tranquilidad.",
+  },
+];
+---
+
+<section class="py-10">
+  <div class="container mx-auto px-4 text-center">
+    <div class="mt-12 w-full max-w-6xl mx-auto px-4 mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
+        Tu camino hacia la mejor hipoteca
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 lg:gap-8">
+      {
+        steps.map((item, index) => (
+          <StepCard
+            step={item.step}
+            title={item.title}
+            description={item.description}
+            isLast={index === steps.length - 1}
+          />
+        ))
+      }
+    </div>
+
+    <BankLogos />
+
+    <div
+      class="w-full max-w-4xl border-t border-gray-200 dark:border-gray-800 pt-12 mx-auto"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-10">
+        <div class="text-left space-y-4">
+          <div
+            class="inline-flex items-center space-x-2 text-blue-600 dark:text-blue-400 font-bold text-sm tracking-wider uppercase"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <span>Entidad Regulada</span>
+          </div>
+
+          <p class="text-md leading-relaxed">
+            Operamos bajo la estricta supervisión del <strong
+              >Banco de España</strong
+            >. Estamos inscritos como Intermediarios de Crédito Inmobiliario
+            según la <strong>Ley 05/2019</strong>, lo que garantiza
+            transparencia total en tu gestión.
+          </p>
+        </div>
+
+        <div class="flex justify-center md:justify-end">
+          <div
+            class="bg-white p-6 rounded-2xl shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:bg-white transition-transform hover:scale-105 duration-300"
+          >
+            <img
+              src="/Registro-banco-de-espana.png"
+              alt="Registro Banco de España Nº 2019/D641"
+              class="h-9 md:h-11 w-auto"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
