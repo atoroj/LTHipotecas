@@ -1,41 +1,29 @@
 ---
-interface Props {
-  currentPath: string;
-}
-
-const { currentPath } = Astro.props;
-
 const navLinks = [
-  { href: "/", label: "Inicio" },
-  { href: "/sobre-mi", label: "Sobre mí" },
-  { href: "/preguntas-frecuentes", label: "Preguntas Frecuentes" },
+  { href: "/#inicio", label: "Inicio" },
+  { href: "/#sobre-mi", label: "Sobre mí" },
 ];
 
-// Clases base
-const baseClasses = "font-medium py-3 md:py-6 transition-colors";
-const activeClasses =
-  "text-blue-600 border-b-2 border-blue-600 dark:text-blue-500 dark:border-blue-500";
-const inactiveClasses =
-  "text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500";
+const linkClasses =
+  "font-medium py-3 md:py-6 px-4 md:px-0 border-b md:border-0 border-gray-100 dark:border-gray-700 text-gray-800 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-500 transition-colors block md:inline-block";
 ---
 
 <header
-  class="flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full bg-gray-50 text-sm py-3 md:py-0 dark:bg-gray-800 dark:border-gray-700"
+  class="sticky top-0 w-full z-50 dark:bg-gray-900/95 bg-gray-50 dark:border-gray-800 transition-all duration-300"
 >
   <div class="max-w-7xl w-full mx-auto px-4 md:px-6 lg:px-12">
-    <div
-      class="relative flex flex-wrap items-center justify-between md:flex-nowrap"
-    >
+    <div class="relative flex items-center justify-between h-16 md:h-20">
       <a
-        class="flex-none text-xl font-semibold dark:text-white flex items-center gap-x-3"
-        href="/"
+        class="flex-none text-xl font-semibold dark:text-white flex items-center gap-x-3 z-50 relative"
+        href="/#inicio"
         aria-label="Brand"
-        ><span class="text-blue-600 dark:text-blue-500 w-8 h-8 md:w-10 md:h-10">
+      >
+        <span class="text-blue-600 dark:text-blue-500 w-8 h-8 md:w-10 md:h-10">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 400.5 400.5"
             preserveAspectRatio="xMidYMid meet"
-            class="text-blue-600 dark:text-blue-400 transition-transform group-hover:scale-110"
+            class="w-full h-full"
           >
             <path
               fill="currentColor"
@@ -43,62 +31,60 @@ const inactiveClasses =
             ></path>
           </svg>
         </span>
-        <span class="text-sm md:text-2xl">Asesoría Hipotecaria</span
-        >
+        <span class="text-sm md:text-2xl">Asesoría Hipotecaria</span>
       </a>
+
       <input type="checkbox" id="menu-toggle" class="hidden peer" />
+
       <label
         for="menu-toggle"
-        class="md:hidden p-2 cursor-pointer rounded-md border bg-gray-100 text-gray-500 dark:bg-slate-900 dark:border-gray-700
-          peer-checked:[&>.icon-open]:hidden
-          peer-checked:[&>.icon-close]:block"
+        class="md:hidden p-2 cursor-pointer text-gray-800 dark:text-white z-50
+        peer-checked:[&>.icon-open]:hidden
+        peer-checked:[&>.icon-close]:block"
       >
         <svg
-          class="icon-open w-5 h-5 block"
+          class="icon-open w-6 h-6"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
-        >
-          <path
+          ><path
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="M4 6h16M4 12h16m-7 6h7"></path>
-        </svg>
+            d="M4 6h16M4 12h16m-7 6h7"></path></svg
+        >
         <svg
-          class="icon-close w-5 h-5 hidden"
+          class="icon-close w-6 h-6 hidden"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
-        >
-          <path
+          ><path
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
+            d="M6 18L18 6M6 6l12 12"></path></svg
+        >
       </label>
 
       <nav
-        class="max-h-0 peer-checked:max-h-64 md:max-h-full overflow-hidden transition-all duration-300 ease-in-out w-full md:w-auto"
+        class="absolute top-full left-0 w-full bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 shadow-xl
+        hidden peer-checked:block
+        md:static md:block md:w-auto md:bg-transparent md:border-none md:shadow-none"
       >
         <div
-          class="flex flex-col md:flex-row md:items-center md:justify-end md:gap-x-7 py-5 md:py-0"
+          class="flex flex-col md:flex-row md:items-center md:gap-x-8 p-4 md:p-0"
         >
           {
             navLinks.map(({ href, label }) => (
-              <a
-                href={href}
-                class={`${baseClasses} ${currentPath === href ? activeClasses : inactiveClasses}`}
-                aria-current={currentPath === href ? "page" : undefined}
-              >
+              <a href={href} class={linkClasses}>
                 {label}
               </a>
             ))
           }
+
           <a
-            class="mt-3 md:mt-0 inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-md py-2.5 px-3 transition-all"
-            href="/contacto"
+            class="mt-4 md:mt-0 w-full md:w-auto text-center inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg py-2.5 px-5 transition-all shadow-lg shadow-blue-600/20"
+            href="/#contacto"
           >
             Contacto
           </a>
@@ -107,3 +93,15 @@ const inactiveClasses =
     </div>
   </div>
 </header>
+
+<script>
+  // Script para cerrar el menú automáticamente al hacer click en un enlace (Móvil)
+  const menuLinks = document.querySelectorAll("nav a");
+  const checkbox = document.getElementById("menu-toggle") as HTMLInputElement;
+
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (checkbox) checkbox.checked = false;
+    });
+  });
+</script>

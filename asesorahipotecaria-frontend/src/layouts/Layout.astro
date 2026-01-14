@@ -14,7 +14,7 @@ import WhatsappWidget from "../components/WhatsappWidget.astro";
 import { ClientRouter } from "astro:transitions";
 ---
 
-<html lang="en" class="bg-gray-50 dark:bg-gray-800">
+<html lang="en" class="bg-gray-50 dark:bg-gray-800 scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -30,12 +30,12 @@ import { ClientRouter } from "astro:transitions";
     <title>{title + subtitle}</title>
   </head>
 
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col text-gray-800 dark:text-gray-200">
     <Header currentPath={Astro.url.pathname} />
     <main class="grow">
       <slot />
       <WhatsappWidget />
     </main>
-    <Footer />
+    <!-- <Footer /> -->
   </body>
 </html>
