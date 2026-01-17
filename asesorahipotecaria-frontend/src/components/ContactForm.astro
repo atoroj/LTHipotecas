@@ -51,23 +51,29 @@ const inputErrors = isInputError(error) ? error.fields : null;
           Contáctanos
         </h2>
 
-        {/* Bloque de Error */}
-        {inputErrors ? (
-          <div class="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700">
-            <p class="font-bold text-red-700">Error al enviar</p>
-            <ul class="list-disc list-inside text-sm">
-              {Object.entries(inputErrors).map(([field, messages]) =>
-                messages?.map((errorMessage) => (
-                  <li class="text-red-700">{errorMessage}</li>
-                ))
-              )}
-            </ul>
-          </div>
-        ) : (
-          <div class="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700">
-            <p class="font-bold">Error al enviar</p>
-            <p>{error?.message}</p>
-          </div>
+        {/* Bloque de Error - Solo se muestra si 'error' existe */}
+        {error && (
+          <>
+            {inputErrors ? (
+              <div class="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700">
+                <p class="font-bold mb-2">
+                  Por favor revisa los siguientes campos:
+                </p>
+                <ul class="list-disc list-inside text-sm">
+                  {Object.entries(inputErrors).map(([field, messages]) =>
+                    messages?.map((errorMessage) => (
+                      <li class="text-red-700">{errorMessage}</li>
+                    ))
+                  )}
+                </ul>
+              </div>
+            ) : (
+              <div class="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700">
+                <p class="font-bold">Error al enviar</p>
+                <p>{error.message}</p>
+              </div>
+            )}
+          </>
         )}
 
         <form
