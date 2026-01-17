@@ -1,74 +1,159 @@
+---
+import { actions, isInputError } from "astro:actions";
+
+const result = Astro.getActionResult(actions.send);
+
+// Lógica de extracción de errores para ayudar a TypeScript
+const error = result?.error;
+// Si es error de input (Zod), guardamos los campos. Si no, es null.
+const inputErrors = isInputError(error) ? error.fields : null;
+---
+
 <div
   class="max-w-xl mx-auto p-8 bg-white dark:bg-gray-700 shadow-xl rounded-lg"
 >
-  <h2 class="text-3xl font-bold mb-6">Contáctanos</h2>
+  {
+    result && !result.error ? (
+      <div class="text-center py-10 animate-fade-in">
+        <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </div>
+        <h2 class="text-3xl font-bold mb-2 text-gray-800 dark:text-white">
+          ¡Mensaje Enviado!
+        </h2>
+        <p class="text-gray-600 dark:text-gray-300 text-lg">
+          Gracias por contactarnos. Te responderemos lo antes posible.
+        </p>
+        <a
+          href="/"
+          class="mt-6 inline-block text-blue-600 font-medium hover:underline"
+        >
+          Volver al inicio
+        </a>
+      </div>
+    ) : (
+      /* FORMULARIO NORMAL: Se muestra si no se ha enviado aún o hubo error */
+      <>
+        <h2 class="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
+          Contáctanos
+        </h2>
 
-  <form
-    method="POST"
-    action="#"
-    class="space-y-6"
-    aria-label="Formulario de contacto"
-  >
-    <div>
-      <label for="name" class="block text-sm font-medium mb-1"> Nombre </label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        required
-        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
-        placeholder="Tu nombre completo"
-      />
-    </div>
+        {/* Bloque de Error */}
+        {inputErrors ? (
+          <div class="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700">
+            <p class="font-bold text-red-700">Error al enviar</p>
+            <ul class="list-disc list-inside text-sm">
+              {Object.entries(inputErrors).map(([field, messages]) =>
+                messages?.map((errorMessage) => (
+                  <li class="text-red-700">{errorMessage}</li>
+                ))
+              )}
+            </ul>
+          </div>
+        ) : (
+          <div class="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700">
+            <p class="font-bold">Error al enviar</p>
+            <p>{error?.message}</p>
+          </div>
+        )}
 
-    <div>
-      <label for="phone" class="block text-sm font-medium mb-1">
-        Teléfono
-      </label>
-      <input
-        type="tel"
-        id="phone"
-        name="phone"
-        required
-        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
-        placeholder="Número de teléfono"
-      />
-    </div>
-    <div>
-      <label for="email" class="block text-sm font-medium mb-1">
-        Correo Electrónico
-      </label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        required
-        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
-        placeholder="ejemplo@dominio.com"
-      />
-    </div>
+        <form
+          method="POST"
+          action={actions.send}
+          class="space-y-6"
+          aria-label="Formulario de contacto"
+        >
+          <div>
+            <label
+              for="name"
+              class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-200"
+            >
+              {" "}
+              Nombre{" "}
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
+              placeholder="Tu nombre completo"
+            />
+          </div>
 
-    <div>
-      <label for="message" class="block text-sm font-medium mb-1">
-        Mensaje
-      </label>
-      <textarea
-        id="message"
-        name="message"
-        rows="4"
-        required
-        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 resize-none transition duration-150 ease-in-out"
-        placeholder="Cuéntame brevemente tu situación (tipo de operación, momento en el que estás, situación laboral y cualquier dato que consideres importante)"
-      ></textarea>
-    </div>
+          <div>
+            <label
+              for="phone"
+              class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-200"
+            >
+              Teléfono
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              required
+              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
+              placeholder="Número de teléfono"
+            />
+          </div>
+          <div>
+            <label
+              for="email"
+              class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-200"
+            >
+              Correo Electrónico
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-md focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
+              placeholder="ejemplo@dominio.com"
+            />
+          </div>
 
-    <div class="pt-2">
-      <button
-        type="submit"
-        class="w-full flex justify-center py-3 px-6 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out transform hover:scale-[1.01]"
-      >
-        Enviar Mensaje
-      </button>
-    </div>
-  </form>
+          <div>
+            <label
+              for="message"
+              class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-200"
+            >
+              Mensaje
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              required
+              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-md focus:ring-blue-500 focus:border-blue-500 resize-none transition duration-150 ease-in-out"
+              placeholder="Cuéntame brevemente tu situación..."
+            />
+          </div>
+
+          <div class="pt-2">
+            <button
+              type="submit"
+              class="w-full flex justify-center py-3 px-6 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out transform hover:scale-[1.01]"
+            >
+              Enviar Mensaje
+            </button>
+          </div>
+        </form>
+      </>
+    )
+  }
 </div>
