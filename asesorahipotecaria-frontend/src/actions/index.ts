@@ -1,5 +1,5 @@
 // src/actions/index.ts
-import { defineAction } from "astro:actions";
+import { defineAction, ActionError } from "astro:actions";
 import { z } from "astro:schema";
 import { Resend } from "resend";
 
@@ -41,8 +41,7 @@ export const server = {
               <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
                 
                 <div style="background-color: #2563EB; padding: 30px 20px; text-align: center;">
-                  <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: bold;">Nuevo Contacto Web</h1>
-                  <p style="color: #e0e7ff; margin: 5px 0 0 0; font-size: 14px;">Tienes una nueva solicitud de información</p>
+                  <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: bold;">Nuevo Solicitud de información Web</h1>
                 </div>
 
                 <div style="padding: 30px;">
@@ -89,7 +88,10 @@ export const server = {
 
       if (error) {
         console.error("Error enviando email:", error);
-        throw new Error("Error al enviar el email: " + error.message);
+        throw new ActionError({
+          code: "BAD_REQUEST",
+          message: "No se pudo enviar el correo, inténtalo más tarde."
+        });
       }
 
       return { success: true };

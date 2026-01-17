@@ -1,8 +1,12 @@
 ---
-import { actions } from "astro:actions";
+import { actions, isInputError } from "astro:actions";
 
-// Recogemos el resultado de la acción
 const result = Astro.getActionResult(actions.send);
+
+// Lógica de extracción de errores para ayudar a TypeScript
+const error = result?.error;
+// Si es error de input (Zod), guardamos los campos. Si no, es null.
+const inputErrors = isInputError(error) ? error.fields : null;
 ---
 
 <div
@@ -47,10 +51,22 @@ const result = Astro.getActionResult(actions.send);
           Contáctanos
         </h2>
 
-        {result?.error && (
+        {/* Bloque de Error */}
+        {inputErrors ? (
+          <div class="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700">
+            <p class="font-bold text-red-700">Error al enviar</p>
+            <ul class="list-disc list-inside text-sm">
+              {Object.entries(inputErrors).map(([field, messages]) =>
+                messages?.map((errorMessage) => (
+                  <li class="text-red-700">{errorMessage}</li>
+                ))
+              )}
+            </ul>
+          </div>
+        ) : (
           <div class="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700">
             <p class="font-bold">Error al enviar</p>
-            <p>{result.error.message}</p>
+            <p>{error?.message}</p>
           </div>
         )}
 
