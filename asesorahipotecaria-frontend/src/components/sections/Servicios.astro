@@ -25,13 +25,11 @@ const steps = [
 ];
 ---
 
-<section class="py-10">
-  <div class="container mx-auto px-4 text-center">
-    <div class="mt-12 w-full max-w-6xl mx-auto px-4 mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
-        Tu camino hacia la mejor hipoteca
-      </h2>
-    </div>
+<section class="pt-20 px-4 md:px-6 lg:px-12">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl md:text-4xl pb-10 font-bold tracking-tight">
+      Tu camino hacia la mejor hipoteca
+    </h2>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 lg:gap-8">
       {
@@ -49,7 +47,7 @@ const steps = [
     <BankLogos />
 
     <div
-      class="w-full max-w-4xl border-t border-gray-200 dark:border-gray-800 pt-12 mx-auto"
+      class="w-full border-t border-gray-200 dark:border-gray-800 pt-12 mx-auto"
     >
       <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-10">
         <div class="text-left space-y-4">
@@ -79,15 +77,25 @@ const steps = [
           </p>
         </div>
 
-        <div class="flex justify-center md:justify-end">
+        <div class="flex justify-center md:justify-end text-left">
           <div
-            class="bg-white p-6 rounded-2xl shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:bg-white transition-transform hover:scale-105 duration-300"
+            class="bg-white p-6 rounded-2xl shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:bg-gray-700 transition-transform hover:scale-105 duration-300 flex items-center space-x-4"
           >
-            <img
-              src="/Registro-banco-de-espana.png"
-              alt="Registro Banco de España Nº 2019/D641"
-              class="h-9 md:h-11 w-auto"
-            />
+            <div class="flex flex-col">
+              <span class="text-xl md:text-2xl font-bold">BANCO DE ESPAÑA</span>
+              <span class="text-sm text-gray-500 dark:text-gray-500"
+                >Eurosistema</span
+              >
+            </div>
+            <div class="h-12 border-l-2 border-gray-300 dark:border-gray-300">
+            </div>
+            <div
+              class="flex flex-col text-sm text-gray-600 dark:text-gray-100 font-medium"
+            >
+              <span>Registro Nº E461</span>
+              <span>según Intermediarios de Créditos Inmobiliarios</span>
+              <span>según Ley 05/2019</span>
+            </div>
           </div>
         </div>
       </div>
