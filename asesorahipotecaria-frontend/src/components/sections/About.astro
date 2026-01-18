@@ -1,5 +1,7 @@
 ---
-// src/components/sections/AboutSection.astro
+import { Image } from "astro:assets";
+
+import fotoPerfil from "../../assets/aboutme.png";
 
 const nombre = "Lucia Toro";
 const experiencia = [
@@ -73,8 +75,8 @@ const experiencia = [
             class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg opacity-30 blur-lg"
           >
           </div>
-          <img
-            src="/aboutme.png"
+          <Image
+            src={fotoPerfil}
             alt={`Foto de ${nombre}`}
             class="relative max-w-sm rounded-lg shadow-2xl object-cover w-80 h-96"
           />
