@@ -1,52 +1,38 @@
 ---
 import { Image } from "astro:assets";
-
 import fotoPerfil from "../../assets/aboutme.png";
+import { getEntry } from "astro:content";
 
-const nombre = "Lucia Toro";
-const experiencia = [
-  "Inscrita en el Banco de España como intermediaria de crédito inmobiliario con número de registro E461",
-  "Miembro de ANICI (Asociación Nacional de Intermediarias de Crédito Inmobiliario)",
-];
+const sobreMi = await getEntry("about", "sobre-mi");
+
+if (!sobreMi) {
+  throw new Error("No se encontro el archivo sobre-mi");
+}
+
+const { data, render } = sobreMi;
+const { Content } = await render();
 ---
 
 <section class="py-20 px-4 md:px-6 lg:px-12">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
       <div class="lg:col-span-2 text-center lg:text-left">
-        <h2 class="text-5xl font-bold">Sobre mí</h2>
+        <h2 class="text-5xl font-bold">{data.title}</h2>
         <h3
           class="text-3xl font-semibold mt-4 text-blue-600 dark:text-blue-400"
         >
-          Soy Lucia Toro, asesora hipotecaria
+          {data.subtitle}
         </h3>
-        <p class="pt-2 leading-relaxed">
-          Durante más de 10 años trabajé en banca, lo que me permitió conocer el
-          sistema desde dentro.
-        </p>
-
-        <p class="pt-2 leading-relaxed">
-          Hoy acompaño a personas que quieren comprar su vivienda con
-          tranquilidad, entendiendo cada paso y tomando decisiones bien
-          informadas.
-        </p>
-        <p class="pt-2 leading-relaxed">
-          Trabajo de forma cercana, ordenada y honesta.
-        </p>
-        <p class="pt-2 leading-relaxed">
-          Si una operación no es viable, lo digo.
-        </p>
-        <p class="pt-2 leading-relaxed">
-          Y si lo es, me implico al máximo para que llegues a la firma con
-          seguridad
+        <p class="pt-2 leading-relaxed space-y-4 text-lg">
+          <Content />
         </p>
 
         <h2 class="pt-4 text-2xl font-bold leading-relaxed">
-          Transparencia y regulación
+          {data.title_experiencia}
         </h2>
         <ul class="space-y-4 text-lg mt-4 text-left inline-block">
           {
-            experiencia.map((item) => (
+            data.experiencia.map((item) => (
               <li class="flex items-start">
                 <span class="mr-3 text-blue-600 mt-1">
                   <svg
@@ -77,7 +63,7 @@ const experiencia = [
           </div>
           <Image
             src={fotoPerfil}
-            alt={`Foto de ${nombre}`}
+            alt={`Foto de ${data.name}`}
             class="relative max-w-sm rounded-lg shadow-2xl object-cover w-80 h-96"
           />
         </div>
