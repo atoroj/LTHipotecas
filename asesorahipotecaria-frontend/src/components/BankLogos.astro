@@ -1,8 +1,15 @@
 ---
+import { Image } from "astro:assets";
+
+import logoBankinter from "../assets/banklogos/bankinter.png";
+import logoIng from "../assets/banklogos/ing.png";
+import logoUnicaja from "../assets/banklogos/unicaja.png";
+
 const banks = [
-  { name: "Bankinter", logo: "/banklogos/bankinter.png" },
-  { name: "ING", logo: "/banklogos/ing.png" },
-  { name: "Unicaja", logo: "/banklogos/unicaja.png" },
+  // En lugar de un string, pasamos la variable importada en 'logo'
+  { name: "Bankinter", logo: logoBankinter },
+  { name: "ING", logo: logoIng },
+  { name: "Unicaja", logo: logoUnicaja },
 ];
 ---
 
@@ -10,7 +17,7 @@ const banks = [
   <h3
     class="text-center text-sm font-semibold uppercase tracking-[0.2em] mb-10"
   >
-    Algunas de las entidades con las que colaboramos
+    Colaboramos con más de 20 entidades a nivel nacional
   </h3>
 
   <div
@@ -18,12 +25,11 @@ const banks = [
   >
     {
       banks.map((bank) => (
-        <img
+        <Image
           src={bank.logo}
           alt={`Logo de ${bank.name}`}
           title={bank.name}
           class="h-6 md:h-8 w-auto object-contain hover:scale-110 grayscale hover:grayscale-0 transition-transform duration-300"
-          loading="lazy"
         />
       ))
     }
