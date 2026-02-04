@@ -14,6 +14,6 @@ Hoy acompaño a personas que quieren comprar su vivienda con tranquilidad, enten
 
 Trabajo de forma cercana, ordenada y honesta.
 
-Si una operación no es viable, lo digo.
+Si tu situacion actual no es favorable para conseguir una hipoteca, te daré las pautas necesarias para que puedamos retomarlo más adelante.
 
-Y si lo es, me implico al máximo para que llegues a la firma con seguridad.
+Y si lo es, me implico al máximo para conseguir juntos tu objetivo.
