@@ -1,7 +1,7 @@
 ---
 title: "Sobre mí"
-subtitle: "Soy Lucia Toro, asesora hipotecaria"
-name: "Lucia Toro"
+subtitle: "Soy Lucía Toro, asesora hipotecaria"
+name: "Lucía Toro"
 title_experiencia: "Transparencia y regulación"
 experiencia:
   - "Inscrita en el Banco de España como intermediaria de crédito inmobiliario con número de registro E461"
@@ -14,6 +14,6 @@ Hoy acompaño a personas que quieren comprar su vivienda con tranquilidad, enten
 
 Trabajo de forma cercana, ordenada y honesta.
 
-Si tu situacion actual no es favorable para conseguir una hipoteca, te daré las pautas necesarias para que puedamos retomarlo más adelante.
+Si tu situación actual no es favorable para conseguir una hipoteca, te daré las pautas necesarias para que puedamos retomarlo más adelante.
 
 Y si lo es, me implico al máximo para conseguir juntos tu objetivo.
