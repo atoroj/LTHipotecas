@@ -19,11 +19,9 @@ export const server = {
 
       const { error } = await resend.emails.send({
         // Dominio verificado
-        //from: 'LT Hipotecas <no-reply@lthipotecas.com>',
-        from:  "Acme <onboarding@resend.dev>",
+        from: 'LT Hipotecas <no-reply@lthipotecas.com>',
         // Donde recibe el aviso
-        //to: ['info@lthipotecas.com'], 
-        to: ['atorojaen@gmail.com'],
+        to: ['info@lthipotecas.com'], 
         
         // RESPONDER A: El email del cliente (para que al dar a "responder" le escribas a él)
         replyTo: email,
