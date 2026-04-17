@@ -1,15 +1,85 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-// Importamos todas las secciones
 import Hero from "../components/sections/Hero.astro";
 import Servicios from "../components/sections/Servicios.astro";
 import About from "../components/sections/About.astro";
 import Testimonios from "../components/sections/Testimonios.astro";
 import Contacto from "../components/sections/Contacto.astro";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FinancialService",
+      "@id": "https://www.lthipotecas.com/#negocio",
+      name: "LT Hipotecas",
+      url: "https://www.lthipotecas.com",
+      logo: "https://www.lthipotecas.com/favicon.svg",
+      image: "https://www.lthipotecas.com/lthipotecas.jpg",
+      description:
+        "Asesora hipotecaria inscrita en el Banco de España como intermediaria de crédito inmobiliario. Ayuda a personas a conseguir la mejor hipoteca para su vivienda.",
+      address: {
+        "@type": "PostalAddress",
+        addressRegion: "Andalucía",
+        addressCountry: "ES",
+      },
+      areaServed: [
+        { "@type": "City", name: "Cádiz" },
+        { "@type": "City", name: "Jerez de la Frontera" },
+        { "@type": "City", name: "Algeciras" },
+        { "@type": "City", name: "El Puerto de Santa María" },
+        { "@type": "City", name: "Chiclana de la Frontera" },
+        { "@type": "City", name: "San Fernando" },
+        { "@type": "City", name: "Sevilla" },
+        { "@type": "AdministrativeArea", name: "Provincia de Cádiz" },
+        { "@type": "AdministrativeArea", name: "Provincia de Sevilla" },
+      ],
+      knowsAbout: [
+        "hipotecas en Cádiz",
+        "hipotecas en Sevilla",
+        "asesor hipotecario Cádiz",
+        "asesor hipotecario Sevilla",
+        "intermediación crediticia Andalucía",
+        "financiación inmobiliaria",
+      ],
+      memberOf: {
+        "@type": "Organization",
+        name: "ANICI - Asociación Nacional de Intermediarias de Crédito Inmobiliario",
+      },
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.lthipotecas.com/#lucia-toro",
+      name: "Lucía Toro",
+      jobTitle: "Asesora Hipotecaria",
+      description:
+        "Asesora hipotecaria con más de 10 años de experiencia en banca. Inscrita en el Banco de España como intermediaria de crédito inmobiliario con número de registro E461.",
+      url: "https://www.lthipotecas.com",
+      worksFor: { "@id": "https://www.lthipotecas.com/#negocio" },
+      hasCredential: {
+        "@type": "EducationalOccupationalCredential",
+        name: "Intermediaria de crédito inmobiliario",
+        credentialCategory: "Registro Banco de España E461",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.lthipotecas.com/#website",
+      url: "https://www.lthipotecas.com",
+      name: "LT Hipotecas",
+      description: "Web oficial de LT Hipotecas, asesora hipotecaria",
+      inLanguage: "es-ES",
+    },
+  ],
+};
 ---
 
 <Layout>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
   <div id="inicio" class="scroll-mt-24">
     <Hero />
   </div>
