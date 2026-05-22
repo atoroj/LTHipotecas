@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import fotoPerfil from "../../assets/aboutme.png";
+import fotoPerfil from "../../assets/aboutme.jpeg";
 import { getEntry } from "astro:content";
 
 const sobreMi = await getEntry("about", "sobre-mi");
@@ -64,7 +64,7 @@ const { Content } = await render();
           <Image
             src={fotoPerfil}
             alt={`Foto de ${data.name}`}
-            class="relative max-w-sm rounded-lg shadow-2xl object-cover w-80 h-96"
+            class="relative max-w-sm rounded-lg shadow-2xl object-cover object-top w-80 h-96 grayscale-100"
           />
         </div>
       </div>
