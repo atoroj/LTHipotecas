@@ -1,0 +1,17 @@
+{
+  "name": "LT Hipotecas",
+  "short_name": "LT Hipotecas",
+  "description": "Asesora hipotecaria inscrita en el Banco de España. Te ayudamos a conseguir la mejor hipoteca.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9fafb",
+  "theme_color": "#2563eb",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ]
+}

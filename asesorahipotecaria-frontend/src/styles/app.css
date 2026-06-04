@@ -9,3 +9,31 @@ body {
     height: 100%;
     font-family: "Poppins", sans-serif;
 }
+
+/* Texto rotativo del Hero */
+.text-rotate {
+    align-items: start;
+}
+
+.text-rotate > span {
+    display: flex;
+    flex-direction: column;
+    animation: text-rotate-slide 10s ease infinite;
+}
+
+.text-rotate > span > span {
+    height: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+@keyframes text-rotate-slide {
+    0%,  15% { transform: translateY(0); }
+    20%, 35% { transform: translateY(-1.2em); }
+    40%, 55% { transform: translateY(-2.4em); }
+    60%, 75% { transform: translateY(-3.6em); }
+    80%, 98% { transform: translateY(-4.8em); }
+    100%     { transform: translateY(0); }
+}
