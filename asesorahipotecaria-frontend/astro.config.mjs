@@ -13,7 +13,7 @@ export default defineConfig({
   },
 
   output: "server",
-  site: 'https://lthipotecas.com',
+  site: 'https://www.lthipotecas.com',
   adapter: vercel(),
   integrations: [sitemap()],
 });

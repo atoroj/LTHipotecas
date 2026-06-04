@@ -4,7 +4,6 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/sections/Hero.astro";
 import Servicios from "../components/sections/Servicios.astro";
 import About from "../components/sections/About.astro";
-import Testimonios from "../components/sections/Testimonios.astro";
 import Contacto from "../components/sections/Contacto.astro";
 
 const jsonLd = {
@@ -15,6 +14,8 @@ const jsonLd = {
       "@id": "https://www.lthipotecas.com/#negocio",
       name: "LT Hipotecas",
       url: "https://www.lthipotecas.com",
+      telephone: "+34611171945",
+      email: "info@lthipotecas.com",
       logo: "https://www.lthipotecas.com/favicon.svg",
       image: "https://www.lthipotecas.com/lthipotecas.jpg",
       description:
@@ -25,22 +26,22 @@ const jsonLd = {
         addressCountry: "ES",
       },
       areaServed: [
-        { "@type": "City", name: "Cádiz" },
-        { "@type": "City", name: "Jerez de la Frontera" },
-        { "@type": "City", name: "Algeciras" },
-        { "@type": "City", name: "El Puerto de Santa María" },
-        { "@type": "City", name: "Chiclana de la Frontera" },
-        { "@type": "City", name: "San Fernando" },
-        { "@type": "City", name: "Sevilla" },
-        { "@type": "AdministrativeArea", name: "Provincia de Cádiz" },
-        { "@type": "AdministrativeArea", name: "Provincia de Sevilla" },
+        {
+          "@type": "City",
+          name: "Cádiz",
+          sameAs: "https://es.wikipedia.org/wiki/C%C3%A1diz",
+        },
+        {
+          "@type": "Country",
+          name: "España",
+          sameAs: "https://es.wikipedia.org/wiki/Espa%C3%B1a",
+        },
       ],
       knowsAbout: [
-        "hipotecas en Cádiz",
-        "hipotecas en Sevilla",
+        "broker hipotecario Cádiz",
+        "hipotecas online España",
         "asesor hipotecario Cádiz",
-        "asesor hipotecario Sevilla",
-        "intermediación crediticia Andalucía",
+        "intermediación crediticia",
         "financiación inmobiliaria",
       ],
       memberOf: {
