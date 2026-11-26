@@ -1,4 +1,10 @@
 ---
+import { getCollection } from "astro:content";
+
+const servicios = (await getCollection("servicios")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
 const navLinks = [
   { href: "/#inicio", label: "Inicio" },
   { href: "/#sobre-mi", label: "Sobre mí" },
@@ -74,8 +80,35 @@ const linkClasses =
         <div
           class="flex flex-col md:flex-row md:items-center md:gap-x-8 p-4 md:p-0"
         >
+          <a href={navLinks[0].href} class={linkClasses}>{navLinks[0].label}</a>
+
+          <div class="relative group">
+            <a href="/hipotecas/" class={linkClasses}>
+              Hipotecas
+              <span aria-hidden="true" class="hidden md:inline text-xs ml-1">▾</span>
+            </a>
+            <ul
+              class="pl-4 md:pl-0 md:absolute md:left-1/2 md:-translate-x-1/2 md:top-full md:w-72 md:-mt-2
+              md:rounded-xl md:bg-white md:dark:bg-gray-800 md:shadow-xl md:border md:border-gray-100 md:dark:border-gray-700 md:py-2
+              md:hidden md:group-hover:block md:group-focus-within:block"
+            >
+              {
+                servicios.map((servicio) => (
+                  <li>
+                    <a
+                      href={`/hipotecas/${servicio.slug}/`}
+                      class="block py-2 px-4 text-sm text-gray-700 dark:text-gray-200 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-gray-700 dark:hover:text-blue-400 transition-colors"
+                    >
+                      {servicio.data.shortName}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
           {
-            navLinks.map(({ href, label }) => (
+            navLinks.slice(1).map(({ href, label }) => (
               <a href={href} class={linkClasses}>
                 {label}
               </a>

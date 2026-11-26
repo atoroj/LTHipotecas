@@ -14,6 +14,7 @@ export default defineConfig({
 
   output: "server",
   site: 'https://www.lthipotecas.com',
+  trailingSlash: 'always',
   adapter: vercel(),
   integrations: [sitemap()],
 });

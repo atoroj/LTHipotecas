@@ -1,0 +1,176 @@
+---
+export const prerender = true;
+
+import { getCollection, getEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const servicios = await getCollection("servicios");
+  return servicios.map((servicio) => ({
+    params: { slug: servicio.slug },
+    props: { servicio },
+  }));
+}
+
+const { servicio } = Astro.props;
+const { data } = servicio;
+const { Content } = await servicio.render();
+
+const relatedEntries = (
+  await Promise.all(data.related.map((slug) => getEntry("servicios", slug)))
+).filter((entry) => entry !== undefined);
+
+const SITE_URL = "https://www.lthipotecas.com";
+const pageUrl = `${SITE_URL}/hipotecas/${servicio.slug}/`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#servicio`,
+      name: data.title,
+      description: data.description,
+      url: pageUrl,
+      serviceType: "Intermediación de crédito inmobiliario",
+      provider: { "@id": `${SITE_URL}/#negocio` },
+      areaServed: [
+        { "@type": "City", name: "Cádiz" },
+        { "@type": "Country", name: "España" },
+      ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Inicio", item: `${SITE_URL}/` },
+        { "@type": "ListItem", position: 2, name: "Hipotecas", item: `${SITE_URL}/hipotecas/` },
+        { "@type": "ListItem", position: 3, name: data.shortName, item: pageUrl },
+      ],
+    },
+    ...(data.faqs.length
+      ? [
+          {
+            "@type": "FAQPage",
+            mainEntity: data.faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.q,
+              acceptedAnswer: { "@type": "Answer", text: faq.a },
+            })),
+          },
+        ]
+      : []),
+  ],
+};
+
+const whatsappUrl = `https://wa.me/34611171945?text=${encodeURIComponent(
+  `Hola Lucía, he visto la página de ${data.shortName.toLowerCase()} y me gustaría contarte mi caso.`
+)}`;
+---
+
+<Layout title={data.seoTitle} description={data.description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <article class="max-w-3xl mx-auto px-4 md:px-6 py-10 md:py-16">
+    <nav aria-label="Ruta de navegación" class="text-sm text-gray-500 dark:text-gray-400 mb-6">
+      <ol class="flex flex-wrap gap-1">
+        <li><a href="/" class="hover:text-blue-600 hover:underline">Inicio</a> /</li>
+        <li><a href="/hipotecas/" class="hover:text-blue-600 hover:underline">Hipotecas</a> /</li>
+        <li aria-current="page" class="text-gray-700 dark:text-gray-200">{data.shortName}</li>
+      </ol>
+    </nav>
+
+    <header class="mb-10">
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">
+        {data.title}
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-gray-600 dark:text-gray-300 border-l-4 border-blue-500 pl-4">
+        {data.intro}
+      </p>
+    </header>
+
+    <div
+      class="leading-7 text-lg space-y-5
+      [&_h2]:text-2xl [&_h2]:md:text-3xl [&_h2]:font-bold [&_h2]:mt-12 [&_h2]:mb-4
+      [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:mt-8 [&_h3]:mb-2
+      [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-2
+      [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:space-y-2
+      [&_a]:text-blue-600 [&_a]:underline dark:[&_a]:text-blue-400
+      [&_strong]:font-semibold"
+    >
+      <Content />
+    </div>
+
+    <aside
+      class="mt-14 p-8 rounded-2xl bg-blue-600 text-white shadow-xl shadow-blue-600/20"
+    >
+      <h2 class="text-2xl font-bold">¿Quieres saber si tu caso es viable?</h2>
+      <p class="mt-3 text-blue-50">
+        Cuéntame tu situación sin compromiso. La reviso y, si encaja, te llamo
+        para estudiarla con calma.
+      </p>
+      <div class="mt-6 flex flex-col sm:flex-row gap-4">
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex justify-center items-center rounded-lg bg-[#25D366] hover:bg-[#20ba5a] px-5 py-3 font-semibold transition-colors"
+          >Escríbeme por WhatsApp</a
+        >
+        <a
+          href="/#contacto"
+          class="inline-flex justify-center items-center rounded-lg bg-white text-blue-700 hover:bg-blue-50 px-5 py-3 font-semibold transition-colors"
+          >Formulario de contacto</a
+        >
+      </div>
+    </aside>
+
+    {
+      data.faqs.length > 0 && (
+        <section class="mt-14">
+          <h2 class="text-2xl md:text-3xl font-bold mb-6">Preguntas frecuentes</h2>
+          <div class="space-y-3">
+            {data.faqs.map((faq) => (
+              <details class="group rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 p-5">
+                <summary class="cursor-pointer list-none font-semibold flex justify-between gap-4">
+                  <h3 class="text-lg">{faq.q}</h3>
+                  <span class="text-blue-600 transition-transform group-open:rotate-45 text-2xl leading-none">+</span>
+                </summary>
+                <p class="mt-3 leading-7 text-gray-700 dark:text-gray-200">{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      relatedEntries.length > 0 && (
+        <section class="mt-14">
+          <h2 class="text-2xl font-bold mb-6">También te puede interesar</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {relatedEntries.map((entry) => (
+              <a
+                href={`/hipotecas/${entry.slug}/`}
+                class="block p-5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 hover:border-blue-500 hover:shadow-md transition"
+              >
+                <span class="font-semibold text-blue-600 dark:text-blue-400">
+                  {entry.data.shortName} →
+                </span>
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">{entry.data.cardText}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <p class="mt-14 text-sm text-gray-500 dark:text-gray-400">
+      Lucía Toro Jaén, intermediaria de crédito inmobiliario inscrita en el
+      Registro del Banco de España con el número E461. La información de esta
+      página es orientativa: la concesión y las condiciones de cualquier
+      hipoteca dependen del análisis de riesgo de cada entidad.
+    </p>
+  </article>
+</Layout>

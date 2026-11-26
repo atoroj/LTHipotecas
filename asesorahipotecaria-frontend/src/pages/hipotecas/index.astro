@@ -1,0 +1,47 @@
+---
+export const prerender = true;
+
+import Layout from "../../layouts/Layout.astro";
+import ServiciosGrid from "../../components/ServiciosGrid.astro";
+
+const SITE_URL = "https://www.lthipotecas.com";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Hipotecas", item: `${SITE_URL}/hipotecas/` },
+  ],
+};
+---
+
+<Layout
+  title="Tipos de hipoteca y servicios"
+  description="Hipoteca 100%, para jóvenes con aval ICO, para autónomos, de inversión, reunificación de deudas y cambio de hipoteca. Asesora hipotecaria en Cádiz y online."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <section class="max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-16">
+    <nav aria-label="Ruta de navegación" class="text-sm text-gray-500 dark:text-gray-400 mb-6">
+      <a href="/" class="hover:text-blue-600 hover:underline">Inicio</a> /
+      <span aria-current="page" class="text-gray-700 dark:text-gray-200">Hipotecas</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight">
+      Hipotecas a tu medida
+    </h1>
+    <p class="mt-6 max-w-3xl text-lg text-gray-600 dark:text-gray-300">
+      Cada situación necesita un planteamiento distinto. Como intermediaria de
+      crédito inmobiliario inscrita en el Banco de España (E461), estudio tu
+      caso, preparo tu expediente y negocio con las entidades para conseguirte
+      la hipoteca que mejor se adapta a ti, en Cádiz o en cualquier punto de
+      España.
+    </p>
+
+    <div class="mt-12">
+      <ServiciosGrid />
+    </div>
+  </section>
+</Layout>

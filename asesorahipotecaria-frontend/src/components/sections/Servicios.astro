@@ -2,6 +2,7 @@
 // src/components/sections/ServicesTrust.astro
 import StepCard from "../StepCard.astro";
 import BankLogos from "../BankLogos.astro";
+import ServiciosGrid from "../ServiciosGrid.astro";
 
 const steps = [
   {
@@ -27,6 +28,18 @@ const steps = [
 
 <section class="pt-20 px-4 md:px-6 lg:px-12">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
+      ¿Qué hipoteca necesitas?
+    </h2>
+    <p class="mt-4 mb-10 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+      Cada situación necesita un planteamiento distinto. Elige la tuya y te
+      explico cómo la trabajamos.
+    </p>
+
+    <ServiciosGrid />
+
+    <div class="mt-20"></div>
+
     <h2 class="text-3xl md:text-4xl pb-10 font-bold tracking-tight">
       Tu camino hacia la mejor hipoteca
     </h2>
