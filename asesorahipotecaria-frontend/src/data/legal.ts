@@ -3,7 +3,7 @@
 export const LEGAL = {
   titular: "Lucía Toro Jaén",
   nombreComercial: "LT Hipotecas",
-  nif: "PENDIENTE: NIF", // ← DNI/NIF de la titular
+  nif: "15441682B",
   domicilio: "Calle Salvador del Mundo 1, 4G, 11009 Cádiz (Cádiz)",
   email: "info@lthipotecas.com",
   telefono: "+34 611 17 19 45",
