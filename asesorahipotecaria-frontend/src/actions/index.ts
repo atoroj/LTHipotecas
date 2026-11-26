@@ -11,6 +11,9 @@ export const server = {
       phone: z.string().min(6, "El teléfono no parece válido"),
       email: z.string().email("El email no es válido"),
       message: z.string().min(5, "El mensaje es muy corto"),
+      privacy: z.literal("on", {
+        errorMap: () => ({ message: "Debes aceptar la política de privacidad" }),
+      }),
     }),
     handler: async (input) => {
       // Inicializamos Resend dentro del handler para evitar errores de carga

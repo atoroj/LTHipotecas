@@ -1,0 +1,18 @@
+---
+// Esta página se renderiza en el servidor (no es estática) porque es la que
+// recibe y procesa el envío del formulario de contacto. La home y el resto de
+// páginas son estáticas y envían el formulario aquí.
+export const prerender = false;
+
+import Layout from "../layouts/Layout.astro";
+import Contacto from "../components/sections/Contacto.astro";
+---
+
+<Layout
+  title="Contacto"
+  description="Cuéntame tu caso y te diré si tu operación hipotecaria es viable. Lucía Toro, asesora hipotecaria en Cádiz y online, inscrita en el Banco de España (E461)."
+>
+  <div id="contacto" class="scroll-mt-24">
+    <Contacto />
+  </div>
+</Layout>

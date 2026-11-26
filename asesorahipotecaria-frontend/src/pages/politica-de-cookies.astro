@@ -1,0 +1,65 @@
+---
+export const prerender = true;
+
+import LegalPage from "../components/LegalPage.astro";
+import { LEGAL } from "../data/legal";
+---
+
+<LegalPage
+  title="Política de cookies"
+  description="Política de cookies de LT Hipotecas: este sitio web no utiliza cookies de análisis, publicidad ni seguimiento."
+>
+  <h2>1. ¿Qué son las cookies?</h2>
+  <p>
+    Las cookies son pequeños archivos que un sitio web guarda en tu navegador
+    para recordar información sobre tu visita. Pueden ser técnicas (necesarias
+    para que la web funcione) o servir para otros fines, como analizar la
+    navegación o mostrar publicidad.
+  </p>
+
+  <h2>2. Cookies que utiliza este sitio web</h2>
+  <p>
+    <strong
+      >Este sitio web no utiliza cookies propias ni de terceros con fines
+      analíticos, publicitarios o de seguimiento</strong
+    >, por lo que no es necesario solicitar tu consentimiento.
+  </p>
+  <p>
+    En caso de que en algún momento se utilicen cookies estrictamente técnicas,
+    estas están exentas de consentimiento conforme al artículo 22.2 de la Ley
+    34/2002 (LSSI-CE).
+  </p>
+
+  <h2>3. Recursos y enlaces de terceros</h2>
+  <ul>
+    <li>
+      <strong>Google Fonts</strong>: las tipografías del sitio se cargan desde
+      servidores de Google, lo que implica que tu navegador se conecta con
+      ellos y les comunica tu dirección IP. Puedes consultar la <a
+        href="https://policies.google.com/privacy"
+        target="_blank"
+        rel="noopener noreferrer">política de privacidad de Google</a
+      >.
+    </li>
+    <li>
+      <strong>WhatsApp</strong>: los botones de WhatsApp son enlaces. Solo al
+      pulsarlos accedes al servicio de WhatsApp (Meta), que aplica sus propias
+      condiciones y cookies.
+    </li>
+  </ul>
+
+  <h2>4. Cómo gestionar las cookies en tu navegador</h2>
+  <p>
+    Puedes permitir, bloquear o eliminar las cookies desde la configuración de
+    tu navegador (Chrome, Firefox, Safari, Edge, etc.). Consulta la ayuda de tu
+    navegador para más información.
+  </p>
+
+  <h2>5. Cambios en esta política</h2>
+  <p>
+    Si en el futuro se incorporan herramientas que utilicen cookies no
+    técnicas (por ejemplo, de analítica), actualizaremos esta política y
+    solicitaremos tu consentimiento cuando sea necesario. Para cualquier duda,
+    escríbenos a <a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a>.
+  </p>
+</LegalPage>

@@ -1,0 +1,128 @@
+---
+export const prerender = true;
+
+import LegalPage from "../components/LegalPage.astro";
+import { LEGAL } from "../data/legal";
+---
+
+<LegalPage
+  title="Aviso legal"
+  description="Aviso legal de LT Hipotecas: datos identificativos de la titular, intermediaria de crédito inmobiliario inscrita en el Banco de España (E461), y condiciones de uso del sitio web."
+>
+  <h2>1. Datos identificativos</h2>
+  <p>
+    En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de
+    Servicios de la Sociedad de la Información y de Comercio Electrónico
+    (LSSI-CE), se informa de los datos del titular de este sitio web:
+  </p>
+  <ul>
+    <li><strong>Titular:</strong> {LEGAL.titular}</li>
+    <li><strong>Nombre comercial:</strong> {LEGAL.nombreComercial}</li>
+    <li><strong>NIF:</strong> {LEGAL.nif}</li>
+    <li><strong>Domicilio:</strong> {LEGAL.domicilio}</li>
+    <li>
+      <strong>Correo electrónico:</strong>
+      <a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a>
+    </li>
+    <li><strong>Teléfono:</strong> {LEGAL.telefono}</li>
+    <li><strong>Sitio web:</strong> {LEGAL.web}</li>
+  </ul>
+
+  <h2>2. Actividad y autorización administrativa</h2>
+  <p>
+    {LEGAL.titular} ejerce la actividad de <strong
+      >intermediaria de crédito inmobiliario</strong
+    > y está inscrita en el Registro de Intermediarios de Crédito Inmobiliario
+    del <strong>Banco de España</strong> con el número <strong
+      >{LEGAL.registroBde}</strong
+    >, conforme a la Ley 5/2019, de 15 de marzo, reguladora de los contratos de
+    crédito inmobiliario, y al Real Decreto 309/2019, de 26 de abril. La
+    inscripción puede consultarse en la web del Banco de España (<a
+      href="https://www.bde.es"
+      target="_blank"
+      rel="noopener noreferrer">www.bde.es</a
+    >).
+  </p>
+  <p>
+    La actividad de intermediación no supone la concesión de préstamos. La
+    aprobación y las condiciones de cualquier operación de financiación
+    corresponden en exclusiva a la entidad prestamista.
+  </p>
+
+  <h2>3. Objeto y condiciones de uso</h2>
+  <p>
+    Este sitio web tiene como finalidad informar sobre los servicios de
+    intermediación hipotecaria de la titular y facilitar el contacto con ella.
+    El acceso y uso del sitio atribuye la condición de usuario e implica la
+    aceptación de este aviso legal.
+  </p>
+  <p>
+    El usuario se compromete a hacer un uso adecuado de los contenidos y a no
+    emplearlos para actividades ilícitas, contrarias a la buena fe o que
+    puedan dañar el sitio web o a terceros.
+  </p>
+
+  <h2>4. Carácter informativo de los contenidos</h2>
+  <p>
+    La información publicada en este sitio, incluidas las cifras, ejemplos y
+    referencias normativas, tiene carácter <strong
+      >general y orientativo</strong
+    > y no constituye una oferta vinculante ni un asesoramiento personalizado.
+    Las condiciones de cada operación dependen del análisis de riesgo de la
+    entidad financiera y de las circunstancias de cada cliente. Antes de
+    contratar, la entidad prestamista entregará la Ficha Europea de
+    Información Normalizada (FEIN) y el resto de documentación precontractual
+    exigida por la ley.
+  </p>
+
+  <h2>5. Propiedad intelectual e industrial</h2>
+  <p>
+    Los contenidos de este sitio web (textos, imágenes, logotipos, diseño y
+    código) son titularidad de {LEGAL.titular} o de terceros que han autorizado
+    su uso, y están protegidos por la normativa de propiedad intelectual e
+    industrial. Queda prohibida su reproducción, distribución o transformación
+    sin autorización expresa. Las marcas y logotipos de entidades financieras
+    que puedan aparecer pertenecen a sus respectivos titulares y se muestran
+    con fines meramente informativos.
+  </p>
+
+  <h2>6. Enlaces a terceros</h2>
+  <p>
+    Este sitio puede contener enlaces a webs de terceros (por ejemplo, el Banco
+    de España o WhatsApp). La titular no se responsabiliza de sus contenidos ni
+    de sus políticas de privacidad.
+  </p>
+
+  <h2>7. Responsabilidad</h2>
+  <p>
+    La titular no se hace responsable de los daños derivados de interrupciones
+    del servicio, errores técnicos o de un uso indebido del sitio web, ni de
+    las decisiones tomadas exclusivamente a partir de la información general
+    publicada en él.
+  </p>
+
+  <h2>8. Protección de datos y cookies</h2>
+  <p>
+    El tratamiento de datos personales se rige por la <a
+      href="/politica-de-privacidad/">Política de privacidad</a
+    >, y el uso de cookies por la <a href="/politica-de-cookies/"
+      >Política de cookies</a
+    >.
+  </p>
+
+  <h2>9. Quejas y reclamaciones</h2>
+  <p>
+    Puede consultar cómo presentar una queja o reclamación en la página de <a
+      href="/atencion-a-la-clientela/"
+      >Atención a la clientela y reclamaciones</a
+    >.
+  </p>
+
+  <h2>10. Legislación aplicable</h2>
+  <p>
+    Este aviso legal se rige por la legislación española. Para cualquier
+    controversia, las partes se someterán a los juzgados y tribunales que
+    correspondan conforme a la normativa aplicable, incluida la de protección
+    de consumidores y usuarios.
+  </p>
+</LegalPage>

@@ -78,7 +78,7 @@ const inputErrors = isInputError(error) ? error.fields : null;
 
         <form
           method="POST"
-          action={actions.send}
+          action={`/contacto/${actions.send}`}
           class="space-y-6"
           aria-label="Formulario de contacto"
         >
@@ -149,6 +149,31 @@ const inputErrors = isInputError(error) ? error.fields : null;
               placeholder="Cuéntame brevemente tu situación..."
             />
           </div>
+
+          <div class="flex items-start gap-3">
+            <input
+              type="checkbox"
+              id="privacy"
+              name="privacy"
+              required
+              class="mt-1 h-4 w-4 shrink-0 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+            />
+            <label for="privacy" class="text-sm text-gray-700 dark:text-gray-200">
+              He leído y acepto la
+              <a href="/politica-de-privacidad/" class="text-blue-600 dark:text-blue-400 underline">política de privacidad</a>.
+            </label>
+          </div>
+
+          <p class="text-xs leading-5 text-gray-500 dark:text-gray-300">
+            <strong>Información básica sobre protección de datos.</strong>
+            Responsable: Lucía Toro Jaén. Finalidad: atender tu consulta.
+            Legitimación: tu consentimiento. Destinatarios: no se ceden datos a
+            terceros salvo obligación legal; proveedores tecnológicos como
+            encargados del tratamiento. Derechos: acceso, rectificación,
+            supresión y otros, escribiendo a info@lthipotecas.com. Más
+            información en la
+            <a href="/politica-de-privacidad/" class="underline">política de privacidad</a>.
+          </p>
 
           <div class="pt-2">
             <button

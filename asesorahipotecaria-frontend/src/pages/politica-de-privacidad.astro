@@ -1,0 +1,154 @@
+---
+export const prerender = true;
+
+import LegalPage from "../components/LegalPage.astro";
+import { LEGAL } from "../data/legal";
+---
+
+<LegalPage
+  title="Política de privacidad"
+  description="Política de privacidad de LT Hipotecas: qué datos personales tratamos, con qué finalidad, durante cuánto tiempo y cómo ejercer tus derechos de protección de datos."
+>
+  <p>
+    Esta política explica cómo se tratan los datos personales de las personas
+    que contactan a través de este sitio web o que solicitan los servicios de
+    intermediación hipotecaria, conforme al Reglamento (UE) 2016/679 (RGPD) y a
+    la Ley Orgánica 3/2018 de Protección de Datos Personales y garantía de los
+    derechos digitales (LOPDGDD).
+  </p>
+
+  <h2>1. Responsable del tratamiento</h2>
+  <ul>
+    <li><strong>Responsable:</strong> {LEGAL.titular} ({LEGAL.nombreComercial})</li>
+    <li><strong>NIF:</strong> {LEGAL.nif}</li>
+    <li><strong>Domicilio:</strong> {LEGAL.domicilio}</li>
+    <li>
+      <strong>Correo electrónico:</strong>
+      <a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a>
+    </li>
+  </ul>
+
+  <h2>2. Qué datos tratamos</h2>
+  <ul>
+    <li>
+      <strong>Datos de contacto</strong> que nos facilitas en el formulario, por
+      correo electrónico o por WhatsApp: nombre, teléfono, correo electrónico y
+      el contenido de tu mensaje.
+    </li>
+    <li>
+      <strong>Datos para estudiar tu operación</strong>, si decides contratar
+      nuestros servicios: datos identificativos, laborales, económicos y
+      patrimoniales, y la documentación necesaria para analizar y presentar tu
+      solicitud de financiación.
+    </li>
+  </ul>
+  <p>
+    Te pedimos que no incluyas en el formulario de contacto información
+    económica detallada ni documentación; la solicitaremos más adelante por un
+    canal adecuado si es necesario.
+  </p>
+
+  <h2>3. Finalidades y base jurídica</h2>
+  <table>
+    <thead>
+      <tr><th>Finalidad</th><th>Base jurídica</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Atender tu consulta y valorar inicialmente si tu caso es viable.</td>
+        <td>Tu consentimiento al enviar el formulario o escribirnos (art. 6.1.a RGPD) y la aplicación de medidas precontractuales a petición tuya (art. 6.1.b RGPD).</td>
+      </tr>
+      <tr>
+        <td>Prestar el servicio de intermediación: analizar tu perfil, preparar el expediente y presentarlo a entidades financieras.</td>
+        <td>Ejecución del contrato de intermediación (art. 6.1.b RGPD).</td>
+      </tr>
+      <tr>
+        <td>Cumplir las obligaciones legales propias de la actividad (Ley 5/2019, normativa de atención a la clientela, obligaciones fiscales y, cuando resulte aplicable, de prevención del blanqueo de capitales).</td>
+        <td>Cumplimiento de obligaciones legales (art. 6.1.c RGPD).</td>
+      </tr>
+      <tr>
+        <td>Gestionar quejas y reclamaciones.</td>
+        <td>Cumplimiento de obligaciones legales (art. 6.1.c RGPD).</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    No utilizamos tus datos para enviarte publicidad ni tomamos decisiones
+    automatizadas que te afecten.
+  </p>
+
+  <h2>4. Destinatarios</h2>
+  <ul>
+    <li>
+      <strong>Entidades financieras</strong>: solo si contratas el servicio y
+      con tu autorización, comunicaremos tus datos a las entidades a las que se
+      presente tu solicitud, para que puedan estudiarla.
+    </li>
+    <li>
+      <strong>Proveedores que nos prestan servicios</strong> (encargados del
+      tratamiento), con los que existe el correspondiente contrato: alojamiento
+      del sitio web (Vercel Inc.), envío de los correos del formulario (Resend)
+      y servicios de correo electrónico y mensajería.
+    </li>
+    <li>
+      <strong>Administraciones y autoridades</strong> (Banco de España,
+      Agencia Tributaria, juzgados y tribunales, etc.) cuando exista una
+      obligación legal.
+    </li>
+  </ul>
+
+  <h2>5. Transferencias internacionales</h2>
+  <p>
+    Algunos proveedores tecnológicos (como Vercel y Resend) pueden tratar datos
+    fuera del Espacio Económico Europeo, en particular en Estados Unidos. Estas
+    transferencias se realizan con las garantías previstas en el RGPD, como el
+    Marco de Privacidad de Datos UE-EE. UU. o las cláusulas contractuales tipo
+    aprobadas por la Comisión Europea.
+  </p>
+
+  <h2>6. Plazo de conservación</h2>
+  <ul>
+    <li>
+      <strong>Consultas que no dan lugar a contratación:</strong> el tiempo
+      necesario para atenderlas y, como máximo, un año.
+    </li>
+    <li>
+      <strong>Clientes:</strong> mientras dure la relación y, después, durante
+      los plazos legales de prescripción y conservación aplicables (por
+      ejemplo, fiscales o de prevención del blanqueo de capitales).
+    </li>
+  </ul>
+
+  <h2>7. Tus derechos</h2>
+  <p>
+    Puedes ejercer tus derechos de <strong
+      >acceso, rectificación, supresión, oposición, limitación del tratamiento y
+      portabilidad</strong
+    >, así como retirar tu consentimiento en cualquier momento, escribiendo a <a
+      href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a
+    > o por correo postal a la dirección indicada, indicando el derecho que
+    deseas ejercer. Podemos pedirte que acredites tu identidad.
+  </p>
+  <p>
+    Si consideras que no hemos atendido correctamente tu solicitud, puedes
+    presentar una reclamación ante la <strong
+      >Agencia Española de Protección de Datos</strong
+    > (<a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer"
+      >www.aepd.es</a
+    >).
+  </p>
+
+  <h2>8. Seguridad</h2>
+  <p>
+    Aplicamos medidas técnicas y organizativas adecuadas para proteger tus
+    datos frente a pérdida, acceso no autorizado o uso indebido, teniendo en
+    cuenta la naturaleza de la información financiera que manejamos.
+  </p>
+
+  <h2>9. Cambios en esta política</h2>
+  <p>
+    Podemos actualizar esta política para adaptarla a cambios legales o en
+    nuestros servicios. La fecha de la última actualización figura al inicio
+    de la página.
+  </p>
+</LegalPage>
